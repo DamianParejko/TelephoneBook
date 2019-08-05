@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="navbar-form navbar-left" role="search" method="get" action="">
+    <div class="form-group">
+
+        <input type="text" class="form-control" name="q" placeholder="Search" value="{{ request.GET.q }}">
+        <button type="submit" class="btn btn-default" value="Search">Search</button>
+        <a class="btn btn-primary" href="{% url 'create' %}">Create new</a>
+    </div>
+</form>
+
+<div class="table-responsive-sm">
+
+    <table class="table table-bordered">
+
+        <thead class="thead-light">
+        <tr>
+            <th>Personal Data</th>
+            <th>Info</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="myTable">
+
+        {% for item in P %}
+        <tr>
+            <th scope="row">
+                {{item.name}}
+                {{item.lastname}}
+            </th>
+            <th>
+
+            Number : {% for info in I %} {{ info.numer }} {% endfor %} Email : {% for info in I %} {{ info.email }} {% endfor %}
+            <a class="btn btn-default" href="{% url 'editInfo' item.id  %}"><i class="far fa-plus-square"></i></a>
+
+            </th>
+            <td class="text-center">
+                <a class="btn btn-primary" href="{% url 'details' item.id %}">Details</a>
+                <a class="btn btn-warning" href="{% url 'editPerson' item.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'delete' item.id %}">Delete</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>
+        <h3>Personal Data</h3>
+    </p>
+    <div class="list-group col-md-6">
+        <a class="list-group-item" href="#">{{ question.name }} {{ question.lastname }}</a>
+            <span class="badge badge-pill badge-primary float-right">Info</span>
+
+        </a>
+        <div class="list-group-item"> Info : {{ info.number }} {{ info.email }} </div>
+
+    </div>
+    <br>
+    <div class="col-md-12"><b>Id = </b> {{question.id }}</div>
+{% endblock content %}
